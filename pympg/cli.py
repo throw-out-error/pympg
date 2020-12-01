@@ -5,7 +5,6 @@ import questionary
 from prompt_toolkit.styles import Style
 from . import *
 from sys import exit
-from ufw_config import UfwConfigGenerator
 
 style = Style(
     [
@@ -22,7 +21,7 @@ style = Style(
 def main():
     generator = questionary.autocomplete(
         "What do you want to generate?",
-        choices=["Apache Config", "UFW Firewall"],
+        choices=["Apache Config"],
         style=style,
     ).ask()
 
@@ -75,7 +74,8 @@ def main():
         else:
             print("Failed to generate: missing answers!")
     elif generator == "UFW Firewall":
-        gen = UfwConfigGenerator()
+        # TODO: fix this
+        """gen = UfwConfigGenerator()
 
         allowDeny = questionary.select(
             "Would you like to accept or deny a port?",
@@ -94,6 +94,6 @@ def main():
         if allowDeny != "" and port != "":
             gen.generate(port, accept=True if allowDeny == "Allow" else False)
         else:
-            print("Failed to generate: missing answers!")
+            print("Failed to generate: missing answers!")"""
     else:
         print("Nothing to generate, exiting...")

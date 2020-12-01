@@ -1,17 +1,18 @@
 [tool.poetry]
 name = "pympg"
 version = "0.0.1"
-description = "Command-line multipurpose config generator."
+description = "Command-line multipurpose generator."
 authors = [
     "Theo Paris <theoparisdesigns@gmail.com>",
     "OnyxCode <me@onyxcode.net>"
 ]
 license = "MIT"
+exclude = ["data", "*.conf", ".vscode", ".github", "build.sh"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.6,<3.10"
 questionary = "^1.8.0"
-ufw-config = "^0.0.1"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.9.0"
