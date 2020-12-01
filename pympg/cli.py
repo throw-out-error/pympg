@@ -4,6 +4,7 @@
 import questionary
 from prompt_toolkit.styles import Style
 from . import *
+from sys import exit
 
 style = Style(
     [
@@ -20,9 +21,7 @@ style = Style(
 def main():
     generator = questionary.autocomplete(
         "What do you want to generate?",
-        choices=[
-            "Apache Config",
-        ],
+        choices=["Apache Config"],
         style=style,
     ).ask()
 
@@ -34,7 +33,7 @@ def main():
             default="/etc/apache2",
             style=style,
         ).ask()
-        if apache_path == None:
+        if apache_path is None:
             print("Failed to generate: missing apache path!")
             exit(1)
 
@@ -43,7 +42,7 @@ def main():
             default="example.com",
             style=style,
         ).ask()
-        if domains == None:
+        if domains is None:
             print("Failed to generate: missing domain(s)!")
             exit(1)
 
@@ -52,7 +51,7 @@ def main():
             default="",
             style=style,
         ).ask()
-        if web_loc == None:
+        if web_loc is None:
             print("Failed to generate: missing webroot!")
             exit(1)
 
@@ -61,7 +60,7 @@ def main():
             default="",
             style=style,
         ).ask()
-        if uri_to_forward == None:
+        if uri_to_forward is None:
             print("Failed to generate: missing proxy URI!")
             exit(1)
 
@@ -74,5 +73,27 @@ def main():
             )
         else:
             print("Failed to generate: missing answers!")
+    elif generator == "UFW Firewall":
+        # TODO: fix this
+        """gen = UfwConfigGenerator()
+
+        allowDeny = questionary.select(
+            "Would you like to accept or deny a port?",
+            choices=["Allow", "Deny"],
+            style=style,
+        ).ask()
+        port = questionary.text(
+            "What port would you like to allow/deny?", style=style
+        ).ask()
+        if allowDeny is None:
+            print("Failed to generate: you did not choose to allow/deny a port.")
+            exit(1)
+        if port is None:
+            print("Failed to generate: Missing port")
+            exit(1)
+        if allowDeny != "" and port != "":
+            gen.generate(port, accept=True if allowDeny == "Allow" else False)
+        else:
+            print("Failed to generate: missing answers!")"""
     else:
         print("Nothing to generate, exiting...")

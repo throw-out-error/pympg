@@ -94,7 +94,7 @@ wcwidth = "*"
 
 [[package]]
 name = "questionary"
-version = "1.8.0"
+version = "1.8.1"
 description = "Python library to build pretty command line user prompts ⭐️"
 category = "main"
 optional = false
@@ -144,6 +144,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "ufw-config"
+version = "0.0.1"
+description = "A tool for opening and closing ports with UFW."
+category = "main"
+optional = false
+python-versions = ">=3.6,<3.10"
+
+[[package]]
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -153,8 +161,8 @@ python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">3.6,<3.10"
-content-hash = "e08a21fbf59db164f992fd2057bb2dd105b6229b342d9a154d0614e173c6fb8c"
+python-versions = ">=3.6,<3.10"
+content-hash = "9ab2e96265433164641251c7b36b7fcdbe1c7db9eb91ef92d8378b6e8362a101"
 
 [metadata.files]
 appdirs = [
@@ -193,8 +201,8 @@ prompt-toolkit = [
     {file = "prompt_toolkit-3.0.3.tar.gz", hash = "sha256:a402e9bf468b63314e37460b68ba68243d55b2f8c4d0192f85a019af3945050e"},
 ]
 questionary = [
-    {file = "questionary-1.8.0-py3-none-any.whl", hash = "sha256:955deb84f73796dd30ad46c0227595969a5be243a477d8072df175228acb9de8"},
-    {file = "questionary-1.8.0.tar.gz", hash = "sha256:0f76eb389aef1048e04bec1338fec074308091446fbe92914d064c77c092a868"},
+    {file = "questionary-1.8.1-py3-none-any.whl", hash = "sha256:e03ec1a585b2ff5a1463238fe63c12d82c740834e17e7b8efae9be58393a8fc9"},
+    {file = "questionary-1.8.1.tar.gz", hash = "sha256:f2999f01735db77a80d6cb119766cb15b84c468cab325168941a3e0d91207437"},
 ]
 regex = [
     {file = "regex-2020.11.13-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:8b882a78c320478b12ff024e81dc7d43c1462aa4a3341c754ee65d857a521f85"},
@@ -283,6 +291,10 @@ typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
     {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
     {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
+]
+ufw-config = [
+    {file = "ufw_config-0.0.1-py3-none-any.whl", hash = "sha256:fdebcec3f2dbbceb0ff1e40ae46e8a2f065cf198f03bbc0dee07b83e9129a10c"},
+    {file = "ufw_config-0.0.1.tar.gz", hash = "sha256:e4c2f112fddc7ae03e4f5247e09a06fd9f9ac47500ae7caad597203bd5e36d97"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
