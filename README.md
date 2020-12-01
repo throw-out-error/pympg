@@ -9,7 +9,7 @@ Command-line multipurpose config generator.
 ## Prerequisites
 
 -   Latest version of Python 3
--   For apache2 config generation, obviously apache2.
+-   For apache2 config generation, apache2 (and it's proxy modules enabled).
 
 ## Installation
 

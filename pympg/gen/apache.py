@@ -48,8 +48,8 @@ class ApacheConfigGenerator(ConfigGenerator):
         self.reload()
 
     def reload(_):
-        # Enable apache proxy pass modules
-        os.system("sudo a2enmod proxy")
-        os.system("sudo a2enmod proxy_http")
         # Reload apache
-        os.system("sudo apachectl -k graceful")
+        if os.name == "nt":
+            os.system("httpd -k graceful")
+        else:
+            os.system("sudo apachectl -k graceful")
