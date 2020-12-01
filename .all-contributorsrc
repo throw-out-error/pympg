@@ -1,0 +1,34 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "onyxcode",
+      "name": "Dan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/58049576?v=4",
+      "profile": "https://onyxcode.net",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "creepinson",
+      "name": "Theo Paris",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11761863?v=4",
+      "profile": "https://theoparis.com/about",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "pympg",
+  "projectOwner": "throw-out-error",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
