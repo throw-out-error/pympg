@@ -144,14 +144,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "ufw-config"
-version = "0.0.1"
-description = "A tool for opening and closing ports with UFW."
-category = "main"
-optional = false
-python-versions = ">=3.6,<3.10"
-
-[[package]]
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -162,7 +154,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6,<3.10"
-content-hash = "9ab2e96265433164641251c7b36b7fcdbe1c7db9eb91ef92d8378b6e8362a101"
+content-hash = "b404eb79a3321338eb870f70340c0524dc3415ea7312524b86478075e0ac6b24"
 
 [metadata.files]
 appdirs = [
@@ -291,10 +283,6 @@ typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
     {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
     {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
-]
-ufw-config = [
-    {file = "ufw_config-0.0.1-py3-none-any.whl", hash = "sha256:fdebcec3f2dbbceb0ff1e40ae46e8a2f065cf198f03bbc0dee07b83e9129a10c"},
-    {file = "ufw_config-0.0.1.tar.gz", hash = "sha256:e4c2f112fddc7ae03e4f5247e09a06fd9f9ac47500ae7caad597203bd5e36d97"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
