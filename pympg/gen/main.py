@@ -1,11 +1,11 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 
 
 class ConfigGenerator(ABC):
-    @abstractclassmethod
+    @abstractmethod
     def generate():
         raise NotImplementedError()
 
-    @abstractclassmethod
+    @abstractmethod
     def reload():
         raise NotImplementedError()
