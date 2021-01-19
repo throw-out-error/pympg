@@ -33,7 +33,7 @@ class ApacheConfigGenerator(ConfigGenerator):
             ServerName {domain}
             {f"ServerAlias {server_alias}" if server_alias else ""}
             {f"DocumentRoot {web_loc}" if web_loc != "" else ""}
-            {"ProxyPass / {uri_to_forward}/ ProxyPassReverse / {uri_to_forward}/" if uri_to_forward != "" else ""}
+            {f"ProxyPass / {uri_to_forward}/ \nProxyPassReverse / {uri_to_forward}/" if uri_to_forward != "" else ""}
             ErrorLog {APACHE_LOG_DIR}/error.log
             CustomLog {APACHE_LOG_DIR}/access.log combined
             </VirtualHost>
