@@ -38,7 +38,10 @@ class ApacheConfigGenerator(ConfigGenerator):
             CustomLog {APACHE_LOG_DIR}/access.log combined
             </VirtualHost>
             """
-        sites_dir = f"{apache_path}/sites-enabled"
+        os.system("a2enmod proxy")
+        os.system("a2enmod proxy_http")
+        os.system(f"a2ensite {domain}")
+        sites_dir = f"{apache_path}/sites-avalible"
         if not os.path.exists(sites_dir):
             os.makedirs(sites_dir)
         f = open(f"{domain}.conf", "w")
