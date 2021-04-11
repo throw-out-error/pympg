@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+from pympg.gen.nginx import NginxConfigGenerator
 from pympg.gen.main import ConfigGenerator
 import questionary
 from prompt_toolkit.styles import Style
@@ -20,9 +21,9 @@ style = Style(
 
 
 def main():
-    generator = questionary.select(
+    generator: str = questionary.select(
         "What do you want to generate?",
-        choices=["Apache Config"],
+        choices=["Apache Config", "Nginx Config"],
         style=style,
     ).ask()
 
@@ -68,6 +69,53 @@ def main():
         if apache_path != "" and domains != "":
             gen = ApacheConfigGenerator(
                 apache_path=apache_path,
+                domains=domains,
+                uri_to_forward=uri_to_forward,
+                web_root=web_loc,
+            )
+            gen.generate()
+        else:
+            print("Failed to generate: missing answers!")
+    elif generator == "Nginx Config":
+        nginx_path: str = questionary.path(
+            "Where is nginx located?",
+            default="/etc/nginx",
+            style=style,
+        ).ask()
+        if nginx_path is None:
+            print("Failed to generate: missing apache path!")
+            exit(1)
+
+        domains: str = questionary.text(
+            "What domains to you want to serve? (Seperated by commas)",
+            default="example.com",
+            style=style,
+        ).ask()
+        if domains is None:
+            print("Failed to generate: missing domain(s)!")
+            exit(1)
+
+        web_loc = questionary.path(
+            "What is the path of your website files? (Optional)",
+            default="",
+            style=style,
+        ).ask()
+        if web_loc is None:
+            print("Failed to generate: missing webroot!")
+            exit(1)
+
+        uri_to_forward = questionary.text(
+            "What URI do you want to proxy to? (Optional)",
+            default="",
+            style=style,
+        ).ask()
+        if uri_to_forward is None:
+            print("Failed to generate: missing proxy URI!")
+            exit(1)
+
+        if nginx_path != "" and domains != "":
+            gen = NginxConfigGenerator(
+                nginx_path=nginx_path,
                 domains=domains,
                 uri_to_forward=uri_to_forward,
                 web_root=web_loc,
