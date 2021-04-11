@@ -1,6 +1,5 @@
 from urllib.parse import urlparse
 import os
-from shutil import copyfile
 from typing import Union, Literal
 from .main import ConfigGenerator
 
@@ -8,48 +7,62 @@ APACHE_LOG_DIR = "${APACHE_LOG_DIR}"
 
 
 class ApacheConfigGenerator(ConfigGenerator):
-    def generate(
+    def __init__(
         self,
         domains: str = "example.com",
-        web_loc: bool = False,
+        web_root: Union[bool, str] = False,
         uri_to_forward: Union[Literal[False], str] = False,
         apache_path: str = "/etc/apache2",
     ):
-        domainAnswer = domains.split(",")
-        domain = domainAnswer[0]
-        server_alias = "".join(list([f"{d} " for d in domainAnswer[1:]]))
+        self.domains = domains.split(",")
+        self.web_root = web_root
+        self.forward_uri = uri_to_forward
+        self.apache_path = apache_path
 
-        if uri_to_forward and uri_to_forward.strip() == "":
-            uri_to_forward = f"localhost"
+    def generate(self):
 
-        if uri_to_forward != "" and not urlparse(uri_to_forward).scheme in {
+        domain = self.domains[0]
+        server_alias = "".join(list([f"{d} " for d in self.domains[1:]]))
+
+        if self.forward_uri and self.forward_uri.strip() == "":
+            self.forward_uri = "localhost"
+
+        if self.forward_uri != "" and not urlparse(self.forward_uri).scheme in {
             "http",
             "https",
         }:
-            uri_to_forward = f"http://{uri_to_forward}"
+            self.forward_uri = f"http://{self.forward_uri}"
 
-        config = f"""
-            <VirtualHost *:80>
-            ServerName {domain}
-            {f"ServerAlias {server_alias}" if server_alias else ""}
-            {f"DocumentRoot {web_loc}" if web_loc != "" else ""}
-            {f"ProxyPass / {uri_to_forward}/ \nProxyPassReverse / {uri_to_forward}/" if uri_to_forward != "" else ""}
-            ErrorLog {APACHE_LOG_DIR}/error.log
-            CustomLog {APACHE_LOG_DIR}/access.log combined
-            </VirtualHost>
-            """
-        sites_dir = f"{apache_path}/sites-enabled"
+        config = (
+            "<VirtualHost *:80>"
+            f"ServerName {domain}"
+            f"ServerAlias {server_alias}"
+            if server_alias
+            else f"DocumentRoot {self.web_root}"
+            if self.web_root != ""
+            else ""
+            f"ProxyPass / {self.web_root}/ \nProxyPassReverse / {self.forward_uri}/"
+            if self.forward_uri != ""
+            else ""
+            "ErrorLog {APACHE_LOG_DIR}/error.log"
+            "CustomLog {APACHE_LOG_DIR}/access.log combined"
+            "</VirtualHost>"
+        )
+        sites_dir = f"{self.apache_path}/sites-available"
         if not os.path.exists(sites_dir):
             os.makedirs(sites_dir)
-        f = open(f"{domain}.conf", "w")
+        f = open(f"{sites_dir}/{domain}.conf", "w")
         f.write(config)
         f.close()
-        copyfile(f"{domain}.conf", f"{sites_dir}/{domain}.conf")
         self.reload()
 
-    def reload(_):
+    def reload(self):
         # Reload apache
         if os.name == "nt":
             os.system("httpd -k graceful")
         else:
+            domains = " ".join(self.domains)
+            os.system("a2enmod proxy")
+            os.system("a2enmod proxy_http")
+            os.system(f"a2ensite {domains}")
             os.system("sudo apachectl -k graceful")
