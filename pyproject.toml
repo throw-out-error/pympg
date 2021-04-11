@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pympg"
-version = "0.0.4"
+version = "0.0.5"
 description = "Command-line multipurpose generator."
 authors = [
     "Theo Paris <theoparisdesigns@gmail.com>",

@@ -35,13 +35,14 @@ class NginxConfigGenerator(ConfigGenerator):
             "server {\n"
             f"   listen 80;\n"
             f"   server_name {domain} {server_alias};\n"
-            f"   root {self.web_root};\n"
-            if self.web_root != ""
-            else ""
-            "    location / {\n"
+        )
+        if self.web_root != "":
+            config += f"   root {self.web_root};\n"
+        config += (
+            "   location / {\n"
             f"       proxy_pass {self.forward_uri};\n"
-            "        proxy_set_header Host $http_host;\n"
-            "    }"
+            "       proxy_set_header Host $http_host;\n"
+            "    }\n"
             if self.forward_uri != ""
             else ""
         )
