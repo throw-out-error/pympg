@@ -71,7 +71,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "poethepoet"
-version = "0.9.0"
+version = "0.10.0"
 description = "A task runner that works well with poetry."
 category = "dev"
 optional = false
@@ -157,7 +157,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6,<3.10"
-content-hash = "b404eb79a3321338eb870f70340c0524dc3415ea7312524b86478075e0ac6b24"
+content-hash = "4ee3f4cce211e4202136bf0140344e3bc9e4e4f6f55984881f35e1a6e91990ea"
 
 [metadata.files]
 appdirs = [
@@ -188,8 +188,8 @@ pathspec = [
     {file = "pathspec-0.8.1.tar.gz", hash = "sha256:86379d6b86d75816baba717e64b1a3a3469deb93bb76d613c9ce79edc5cb68fd"},
 ]
 poethepoet = [
-    {file = "poethepoet-0.9.0-py3-none-any.whl", hash = "sha256:6b1df9a755c297d5b10749cd4713924055b41edfa62055770c8bd6b5da8e2c69"},
-    {file = "poethepoet-0.9.0.tar.gz", hash = "sha256:ab2263fd7be81d16d38a4b4fe42a055d992d04421e61cad36498b1e4bd8ee2a6"},
+    {file = "poethepoet-0.10.0-py3-none-any.whl", hash = "sha256:6fb3021603d4421c6fcc40072bbcf150a6c52ef70ff4d3be089b8b04e015ef5a"},
+    {file = "poethepoet-0.10.0.tar.gz", hash = "sha256:70b97cb194b978dc464c70793e85e6f746cddf82b84a38bfb135946ad71ae19c"},
 ]
 prompt-toolkit = [
     {file = "prompt_toolkit-3.0.3-py3-none-any.whl", hash = "sha256:c93e53af97f630f12f5f62a3274e79527936ed466f038953dfa379d4941f651a"},
